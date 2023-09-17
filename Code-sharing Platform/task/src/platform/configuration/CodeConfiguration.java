@@ -5,14 +5,13 @@ import org.springframework.context.annotation.Configuration;
 import platform.model.Code;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Configuration
 public class CodeConfiguration {
 
     @Bean
-    public List<Code> getCode() {
+    public List<Code> getTemplate() {
         return new ArrayList<>(List.of(new Code(
                 """
                                 <html>

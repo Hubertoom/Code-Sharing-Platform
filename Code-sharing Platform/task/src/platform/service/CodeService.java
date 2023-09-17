@@ -8,17 +8,18 @@ import platform.model.Code;
 @AllArgsConstructor
 @Service
 public class CodeService {
-    private CodeRepository codeRepository;
+    private final CodeRepository codeRepository;
 
     public String getHtmlCode() {
         return codeRepository
                 .getCode()
                 .orElseThrow()
-                .getCode();
+                .code();
     }
 
-    public Code getJsonCode() {
+    public String getJsonCode() {
         return codeRepository.getCode()
-                .orElse(new Code(""));
+                .orElse(new Code(""))
+                .code().split("</?pre>")[1];
     }
 }

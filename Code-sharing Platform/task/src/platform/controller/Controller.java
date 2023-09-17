@@ -11,9 +11,9 @@ import platform.service.CodeService;
 @RestController
 public class Controller {
 
-    private CodeService codeService;
+    private final CodeService codeService;
 
-    @GetMapping("code")
+    @GetMapping(value = "/code", produces = "text/html")
     public ResponseEntity<String> getHtmlCode() {
         return ResponseEntity
                 .ok(codeService.getHtmlCode());
@@ -22,6 +22,6 @@ public class Controller {
     @GetMapping("/api/code")
     public ResponseEntity<Code> getJsonCode() {
         return ResponseEntity
-                .ok(codeService.getJsonCode());
+                .ok(new Code(codeService.getJsonCode()));
     }
 }
